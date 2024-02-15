@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
-import { mocData } from 'db';
+import { mocData } from 'data/db';
 
 /**
  * @typedef {import('./types').OrderFromAPI} OrderFromAPI
@@ -16,8 +16,7 @@ import { mocData } from 'db';
 
 const onGetOrder = async (_, thunkAPI) => {
   try {
-    const data = mocData;
-    console.log(data);
+    const data = mocData;    
     if (data.message) throw new Error(data.message);
     return thunkAPI.fulfillWithValue(data.modal);
   } catch (error) {

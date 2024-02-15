@@ -1,7 +1,11 @@
-// import classes from './Form.module.scss';
+import classes from './RegistrationForm.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/hooks';
+import {
+  TextField,
+  
+} from 'entity';
 
 // import {
 //   TextField,
@@ -23,6 +27,10 @@ export const RegistrationForm = () => {
     dispatch(orderState.orderActions.getOrder());
   }, [dispatch, orderState.orderActions.getOrder]);
 
+  useEffect(() => {
+    console.log(orderState?.orderData);
+  }, [dispatch, orderState]);
+
 
   const nameOptions = {
     value: orderState.name,
@@ -37,18 +45,18 @@ export const RegistrationForm = () => {
     value: orderState.tel,
     isValidField: orderState.isValidTel,
     // onFieldChange: onTelChange,
-    // invalidMessage: orderState.orderData?.inputTel.invalidMessage,
-    // type: orderState.orderData?.inputTel.type,
-    // placeholder: orderState.orderData?.inputTel.placeholder,
+    invalidMessage: orderState.orderData?.inputTel.invalidMessage,
+    type: orderState.orderData?.inputTel.type,
+    placeholder: orderState.orderData?.inputTel.placeholder,
   };
 
   const emailOptions = {
     value: orderState.email,
     isValidField: orderState.isValidEmail,
     // onFieldChange: onEmailChange,
-    // invalidMessage: orderState.orderData?.inputEmail.invalidMessage,
-    // type: orderState.orderData?.inputEmail.type,
-    // placeholder: orderState.orderData?.inputEmail.placeholder,
+    invalidMessage: orderState.orderData?.inputEmail.invalidMessage,
+    type: orderState.orderData?.inputEmail.type,
+    placeholder: orderState.orderData?.inputEmail.placeholder,
   };
 
   const formOptions = {
@@ -76,13 +84,13 @@ export const RegistrationForm = () => {
     // className={classes.form}      
     // onSubmit={handleFormSubmit}
     >
-      {/* {nameOptions && (
+      {nameOptions && (
         <TextField
           className={classes.name}
           options={nameOptions}
         />
       )}
-      {emailOptions && (
+      {/* {emailOptions && (
         <TextField
           className={classes.email}
           options={emailOptions}

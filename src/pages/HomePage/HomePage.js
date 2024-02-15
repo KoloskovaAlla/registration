@@ -13,9 +13,7 @@ export const HomePage = () => {
     dispatch(orderState.orderActions.getOrder());
   }, [dispatch, orderState.orderActions.getOrder]);
 
-  useEffect(() => {
-    console.log(orderState);
-  }, [dispatch]);
+
 
   const formOptions = {};
 
