@@ -80,6 +80,7 @@ const initialState = {
   orderData: null,
   errorMessage: '',
   name: '',
+  surname: '',
   isValidName: true,
   tel: '',
   isValidTel: true,
@@ -103,6 +104,9 @@ export const orderSlice = createSlice({
     },
     setName: (state, { payload }) => {
       state.name = payload;
+    },
+    setSurname: (state, { payload }) => {
+      state.surname = payload;
     },
     setIsValidName: (state, { payload }) => {
       state.isValidName = payload;
