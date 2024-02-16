@@ -301,30 +301,24 @@
 
 }
 
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+}
+
+
 .form {
   position: relative;
   margin-top: 30px;
-}
-
-.body {
-  position: absolute;
-  // bottom: -100%;
-  left: 50%;
-  overflow: hidden;
-  padding: 30px 20px;
-  background: var(--bg-color);
-  border: var(--color-border);
-  border-radius: 10px;
-  transform: translate(-50%, 50%);
-  transition: all .5s;
-  width: 90%;
-  z-index: 1;
-
-  @media (min-width: $breakpoint_md) {
-    padding: 30px 25px;
-    width: 400px;
-  }
-
+  width: 100%;
 
 }
 
