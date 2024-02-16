@@ -1,0 +1,11 @@
+.app {
+  &.light {
+    --bg-color: #FFFFFF;
+    --color: #000000;
+  }
+
+  &.dark {
+    --bg-color: #484848;
+    --color: #FFFFFF;
+  }
+}

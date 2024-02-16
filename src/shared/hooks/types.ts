@@ -272,6 +272,7 @@ export type InputPolicy = {
 export type OrderData = {
   title: Title;
   inputName: InputName;
+  inputSurname: InputName;
   inputTel: InputTel;
   inputEmail: InputEmail;
   connect: Connect;

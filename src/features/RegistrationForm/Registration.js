@@ -1,10 +1,10 @@
-import classes from './RegistrationForm.module.scss';
+import classes from './Registration.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useOrder } from 'shared/hooks';
 import {
   TextField,
-  
+
 } from 'entity';
 
 // import {
@@ -36,9 +36,18 @@ export const RegistrationForm = () => {
     value: orderState.name,
     isValidField: orderState.isValidName,
     // onFieldChange: onNameChange,
-    // invalidMessage: orderState.orderData?.inputName.invalidMessage,
-    // type: orderState.orderData?.inputName.type,
-    // placeholder: orderState.orderData?.inputName.placeholder,
+    invalidMessage: orderState.orderData?.inputName.invalidMessage,
+    type: orderState.orderData?.inputName.type,
+    placeholder: orderState.orderData?.inputName.placeholder,
+  };
+
+  const surnameOptions = {
+    value: orderState.name,
+    isValidField: orderState.isValidName,
+    // onFieldChange: onNameChange,
+    invalidMessage: orderState.orderData?.inputSurname.invalidMessage,
+    type: orderState.orderData?.inputSurname.type,
+    placeholder: orderState.orderData?.inputSurname.placeholder,
   };
 
   const telOptions = {
@@ -80,36 +89,46 @@ export const RegistrationForm = () => {
   // } = submitOptions;
 
   return (
-    <form
-    // className={classes.form}      
-    // onSubmit={handleFormSubmit}
-    >
-      {nameOptions && (
-        <TextField
-          className={classes.name}
-          options={nameOptions}
-        />
-      )}
-      {/* {emailOptions && (
-        <TextField
-          className={classes.email}
-          options={emailOptions}
-        />
-      )}
-      {telOptions && (
-        <TextField
-          className={classes.tel}
-          options={telOptions}
-        />
-      )}
+    <div className={classes.body}>
 
+      <h1 className={classes.title}>{orderState.orderData?.title?.content}</h1>
 
-      <Button
-        className={classes.submit}
-        label='submit'
-        content={'text'}
-        disabled={isSubmitDisabled}
-      /> */}
-    </form>
+      <form
+        className={classes.form}
+      // onSubmit={handleFormSubmit}
+      >
+        {nameOptions && (
+          <TextField
+            className={classes.name}
+            options={nameOptions}
+          />
+        )}
+        {nameOptions && (
+          <TextField
+            className={classes.name}
+            options={surnameOptions}
+          />
+        )}
+        {emailOptions && (
+          <TextField
+            className={classes.email}
+            options={emailOptions}
+          />
+        )}
+        {telOptions && (
+          <TextField
+            className={classes.tel}
+            options={telOptions}
+          />
+        )}
+        {/* 
+        <Button
+          className={classes.submit}
+          label='submit'
+          content={'text'}
+          disabled={isSubmitDisabled}
+        /> */}
+      </form>
+    </div>
   );
 };

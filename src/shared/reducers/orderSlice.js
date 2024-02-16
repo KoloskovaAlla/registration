@@ -16,9 +16,9 @@ import { mocData } from 'data/db';
 
 const onGetOrder = async (_, thunkAPI) => {
   try {
-    const data = mocData;    
+    const data = mocData;
     if (data.message) throw new Error(data.message);
-    return thunkAPI.fulfillWithValue(data.modal);
+    return thunkAPI.fulfillWithValue(data.form);
   } catch (error) {
     const /** @type {*} */ { message } = error;
     console.error(message);
