@@ -14,7 +14,7 @@ import { registrationActions, sendRegistration, getRegistration, } from 'shared/
  * @param {Object} store
  * @returns {Object}
  */
-const getState = (store) => store.RegistrationReducer;
+const getState = (store) => store.registrationReducer;
 
 /**
  * @function useRegistration
@@ -30,14 +30,14 @@ export const useRegistration = () => {
   //   localStorage.setItem('isModalActive', isModalActive);
   // }, [isModalActive]);
 
-  // useEffect(() => {
-  //   const isFormValid = state.isValidName &&
-  //     state.isValidTel &&
-  //     state.isValidEmail &&
-  //     state.isValidConnection &&
-  //     state.isChecked;
-  //   dispatch(registrationActions.setIsSubmitDisabled(!isFormValid));
-  // }, [dispatch, state]);
+  useEffect(() => {
+    const isFormValid = state.isValidName &&
+      state.isValidTel &&
+      state.isValidEmail &&
+      state.isValidConnection &&
+      state.isChecked;
+    dispatch(registrationActions.setIsSubmitDisabled(!isFormValid));
+  }, [dispatch, state]);
 
   Object.assign(registrationActions, { sendRegistration, getRegistration });
 

@@ -3,6 +3,7 @@ import { API_BASE_URL } from 'shared/constants/api';
 import { mocData } from 'data/db';
 
 const onGetRegistration = async (_, thunkAPI) => {
+  console.log('test');  
   try {
     const data = mocData;
     if (data.message) throw new Error(data.message);

@@ -22,35 +22,31 @@ export const Registration = () => {
   const dispatch = useDispatch();
   const registrationState = useRegistration();
 
-  // useEffect(() => {
-  //   dispatch(registrationState.orderActions.getRegistration());
-  // }, [dispatch, registrationState.orderActions.getRegistration]);
+  useEffect(() => {
+    dispatch(registrationState.registrationActions.getRegistration());
+  }, [dispatch, registrationState.registrationActions.getRegistration]);
 
   useEffect(() => {
-    console.log(registrationState.orderActions)
-  }, []);
-
-  useEffect(() => {
-    console.log(registrationState?.orderData);
+    console.log(registrationState);
   }, [dispatch, registrationState]);
 
   const onNameChange = ({ target: { value } }) => {
-    dispatch(registrationState.orderActions.setName(value));
+    dispatch(registrationState.registrationActions.setName(value));
     // dispatch(registrationState.orderActions.setIsValidName(validateName(value)));
   };
 
   const onSurnameChange = ({ target: { value } }) => {
-    dispatch(registrationState.orderActions.setSurname(value));
+    dispatch(registrationState.registrationActions.setSurname(value));
     // dispatch(registrationState.orderActions.setIsValidName(validateName(value)));
   };
 
   const onTelChange = ({ target: { value } }) => {
-    dispatch(registrationState.orderActions.setTel(value));
+    dispatch(registrationState.registrationActions.setTel(value));
     // dispatch(registrationState.orderActions.setIsValidTel(validateTel(value)));
   };
 
   const onEmailChange = ({ target: { value } }) => {
-    dispatch(registrationState.orderActions.setEmail(value));
+    dispatch(registrationState.registrationActions.setEmail(value));
     // dispatch(registrationState.orderActions.setIsValidEmail(validateEmail(value)));
   };
 
@@ -58,36 +54,36 @@ export const Registration = () => {
     value: registrationState.name,
     isValidField: registrationState.isValidName,
     onFieldChange: onNameChange,
-    invalidMessage: registrationState.orderData?.inputName.invalidMessage,
-    type: registrationState.orderData?.inputName.type,
-    placeholder: registrationState.orderData?.inputName.placeholder,
+    invalidMessage: registrationState.registrationData?.inputName.invalidMessage,
+    type: registrationState.registrationData?.inputName.type,
+    placeholder: registrationState.registrationData?.inputName.placeholder,
   };
 
   const surnameOptions = {
     value: registrationState.surname,
     isValidField: registrationState.isValidName,
     onFieldChange: onSurnameChange,
-    invalidMessage: registrationState.orderData?.inputSurname.invalidMessage,
-    type: registrationState.orderData?.inputSurname.type,
-    placeholder: registrationState.orderData?.inputSurname.placeholder,
+    invalidMessage: registrationState.registrationData?.inputSurname.invalidMessage,
+    type: registrationState.registrationData?.inputSurname.type,
+    placeholder: registrationState.registrationData?.inputSurname.placeholder,
   };
 
   const telOptions = {
     value: registrationState.tel,
     isValidField: registrationState.isValidTel,
     onFieldChange: onTelChange,
-    invalidMessage: registrationState.orderData?.inputTel.invalidMessage,
-    type: registrationState.orderData?.inputTel.type,
-    placeholder: registrationState.orderData?.inputTel.placeholder,
+    invalidMessage: registrationState.registrationData?.inputTel.invalidMessage,
+    type: registrationState.registrationData?.inputTel.type,
+    placeholder: registrationState.registrationData?.inputTel.placeholder,
   };
 
   const emailOptions = {
     value: registrationState.email,
     isValidField: registrationState.isValidEmail,
     onFieldChange: onEmailChange,
-    invalidMessage: registrationState.orderData?.inputEmail.invalidMessage,
-    type: registrationState.orderData?.inputEmail.type,
-    placeholder: registrationState.orderData?.inputEmail.placeholder,
+    invalidMessage: registrationState.registrationData?.inputEmail.invalidMessage,
+    type: registrationState.registrationData?.inputEmail.type,
+    placeholder: registrationState.registrationData?.inputEmail.placeholder,
   };
 
   const formOptions = {
@@ -114,7 +110,7 @@ export const Registration = () => {
   return (
     <div className={classes.body}>
 
-      <h1 className={classes.title}>{registrationState.orderData?.title?.content}</h1>
+      <h1 className={classes.title}>{registrationState.registrationData?.title?.content}</h1>
 
       <form
         className={classes.form}

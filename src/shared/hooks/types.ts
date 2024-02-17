@@ -316,7 +316,7 @@ export type RegistrationState = {
   isModalActive?: boolean;
   isLoading: boolean;
   orderData: RegistrationData;
-  orderActions: RegistrationActions;
+  registrationActions: RegistrationActions;
 };
 
 export type CashbackState = {
