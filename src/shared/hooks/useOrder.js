@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 
 
 import { useDispatch } from 'react-redux';
-import { orderActions, sendOrder, getOrder, } from '../reducers/orderSlice';
+import { registrationActions, sendRegistration, getRegistration, } from 'shared/reducers/registrationSlice';
 
 /**
- * @typedef {import('./types').OrderState} OrderState
+ * @typedef {import('./types').RegistrationState} RegistrationState
  */
 
 /**
@@ -14,14 +14,14 @@ import { orderActions, sendOrder, getOrder, } from '../reducers/orderSlice';
  * @param {Object} store
  * @returns {Object}
  */
-const getState = (store) => store.orderReducer;
+const getState = (store) => store.RegistrationReducer;
 
 /**
- * @function useOrder
- * @returns {OrderState}
+ * @function useRegistration
+ * @returns {RegistrationState}
  */
 
-export const useOrder = () => {
+export const useRegistration = () => {
   const dispatch = useDispatch();
   const state = useSelector(getState);
   const { isModalActive } = state;
@@ -36,13 +36,13 @@ export const useOrder = () => {
       state.isValidEmail &&
       state.isValidConnection &&
       state.isChecked;
-    dispatch(orderActions.setIsSubmitDisabled(!isFormValid));
+    dispatch(registrationActions.setIsSubmitDisabled(!isFormValid));
   }, [dispatch, state]);
 
-  Object.assign(orderActions, { sendOrder, getOrder });
+  Object.assign(registrationActions, { sendRegistration, getRegistration });
 
   return {
     ...state,
-    orderActions,
+    registrationActions,
   };
 };

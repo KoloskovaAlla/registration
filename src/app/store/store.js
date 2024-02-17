@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { orderReducer } from 'shared/reducers';
+import { registrationReducer } from 'shared/reducers';
 
 const rootReducer = combineReducers({
 
-  orderReducer,
+  registrationReducer,
 
 });
 

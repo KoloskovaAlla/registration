@@ -1,1 +1,1 @@
-export { orderReducer } from './orderSlice';
+export { registrationReducer } from './registrationSlice';

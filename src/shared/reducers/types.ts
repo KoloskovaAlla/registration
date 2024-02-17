@@ -136,10 +136,10 @@ export type ModalData = {
 
 };
 
-export type OrderState = {
+export type RegistrationState = {
   isModalActive: boolean;
   isLoading: boolean;
-  orderData: null | ModalData;
+  registrationData: null | ModalData;
   errorMessage: string;
   name: string;
   isValidName: boolean;
@@ -152,7 +152,7 @@ export type OrderState = {
   isChecked: boolean;
   isSubmitDisabled: boolean;
   isSending: boolean;
-  isOrderSended: boolean;
+  isRegistrationSended: boolean;
   isDataSent: boolean;
 };
 
@@ -364,14 +364,14 @@ export type ErrorModalState = {
   errorMessage: string;
 };
 
-export type OrderFromAPI = {
+export type RegistrationFromAPI = {
 
 };
 
-export type Order = {
+export type Registration = {
 
 };
 
-export type OrderData = {
+export type RegistrationData = {
 
 };
