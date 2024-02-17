@@ -4,8 +4,7 @@ import { useLocation } from 'react-router-dom';
 export const ContinuationPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [modalOpen, setModalOpen] = useState(false);
-  const location = useLocation();
+  const [modalOpen, setModalOpen] = useState(false);  
   
   const handleSubmit = (event) => {
     event.preventDefault(); 
