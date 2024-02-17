@@ -282,6 +282,7 @@ export type OrderData = {
 
 export type OrderActions = {
   setName: Function;
+  setSurname: Function;
   setIsValidName: Function;
   setTel: Function;
   setIsValidTel: Function;
@@ -298,6 +299,7 @@ export type OrderActions = {
 
 export type OrderState = {
   name: string;
+  surname: string;
   isValidName: boolean;
   tel: string;
   isValidTel: boolean;

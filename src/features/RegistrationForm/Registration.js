@@ -31,20 +31,40 @@ export const RegistrationForm = () => {
     console.log(orderState?.orderData);
   }, [dispatch, orderState]);
 
+  const onNameChange = ({ target: { value } }) => {
+    dispatch(orderState.orderActions.setName(value));
+    // dispatch(orderState.orderActions.setIsValidName(validateName(value)));
+  };
+
+  const onSurnameChange = ({ target: { value } }) => {
+    dispatch(orderState.orderActions.setSurname(value));
+    // dispatch(orderState.orderActions.setIsValidName(validateName(value)));
+  };
+
+  const onTelChange = ({ target: { value } }) => {
+    dispatch(orderState.orderActions.setTel(value));
+    // dispatch(orderState.orderActions.setIsValidTel(validateTel(value)));
+  };
+
+  const onEmailChange = ({ target: { value } }) => {
+    dispatch(orderState.orderActions.setEmail(value));
+    // dispatch(orderState.orderActions.setIsValidEmail(validateEmail(value)));
+  };
 
   const nameOptions = {
     value: orderState.name,
     isValidField: orderState.isValidName,
-    // onFieldChange: onNameChange,
+    onFieldChange: onNameChange,
     invalidMessage: orderState.orderData?.inputName.invalidMessage,
     type: orderState.orderData?.inputName.type,
     placeholder: orderState.orderData?.inputName.placeholder,
   };
 
+
   const surnameOptions = {
-    value: orderState.name,
+    value: orderState.surname,
     isValidField: orderState.isValidName,
-    // onFieldChange: onNameChange,
+    onFieldChange: onSurnameChange,
     invalidMessage: orderState.orderData?.inputSurname.invalidMessage,
     type: orderState.orderData?.inputSurname.type,
     placeholder: orderState.orderData?.inputSurname.placeholder,
@@ -53,7 +73,7 @@ export const RegistrationForm = () => {
   const telOptions = {
     value: orderState.tel,
     isValidField: orderState.isValidTel,
-    // onFieldChange: onTelChange,
+    onFieldChange: onTelChange,
     invalidMessage: orderState.orderData?.inputTel.invalidMessage,
     type: orderState.orderData?.inputTel.type,
     placeholder: orderState.orderData?.inputTel.placeholder,
@@ -62,7 +82,7 @@ export const RegistrationForm = () => {
   const emailOptions = {
     value: orderState.email,
     isValidField: orderState.isValidEmail,
-    // onFieldChange: onEmailChange,
+    onFieldChange: onEmailChange,
     invalidMessage: orderState.orderData?.inputEmail.invalidMessage,
     type: orderState.orderData?.inputEmail.type,
     placeholder: orderState.orderData?.inputEmail.placeholder,
@@ -70,6 +90,7 @@ export const RegistrationForm = () => {
 
   const formOptions = {
     nameOptions,
+    surnameOptions,
     telOptions,
     emailOptions,
   };
