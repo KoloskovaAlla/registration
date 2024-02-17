@@ -24,20 +24,20 @@ const getState = (store) => store.RegistrationReducer;
 export const useRegistration = () => {
   const dispatch = useDispatch();
   const state = useSelector(getState);
-  const { isModalActive } = state;
+  // const { isModalActive } = state;
 
-  useEffect(() => {
-    localStorage.setItem('isModalActive', isModalActive);
-  }, [isModalActive]);
+  // useEffect(() => {
+  //   localStorage.setItem('isModalActive', isModalActive);
+  // }, [isModalActive]);
 
-  useEffect(() => {
-    const isFormValid = state.isValidName &&
-      state.isValidTel &&
-      state.isValidEmail &&
-      state.isValidConnection &&
-      state.isChecked;
-    dispatch(registrationActions.setIsSubmitDisabled(!isFormValid));
-  }, [dispatch, state]);
+  // useEffect(() => {
+  //   const isFormValid = state.isValidName &&
+  //     state.isValidTel &&
+  //     state.isValidEmail &&
+  //     state.isValidConnection &&
+  //     state.isChecked;
+  //   dispatch(registrationActions.setIsSubmitDisabled(!isFormValid));
+  // }, [dispatch, state]);
 
   Object.assign(registrationActions, { sendRegistration, getRegistration });
 

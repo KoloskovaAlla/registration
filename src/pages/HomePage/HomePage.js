@@ -1,17 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useOrder } from 'shared/hooks';
-import { RegistrationForm } from 'features/RegistrationForm';
+import { Registration } from 'features/Registration';
 
 
 
 export const HomePage = () => {
   const dispatch = useDispatch();
-  const orderState = useOrder();
+  
 
-  useEffect(() => {
-    dispatch(orderState.orderActions.getOrder());
-  }, [dispatch, orderState.orderActions.getOrder]);
+
 
 
 
@@ -20,7 +17,7 @@ export const HomePage = () => {
   return (
     <div>
       {/* {homePageState.homePage?.download && <SectionBase data={homePageState.homePage.download} type='primary' />} */}
-      {<RegistrationForm />}
+      {<Registration />}
 
     </div>
   );
