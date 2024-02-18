@@ -2,19 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 import { mocData } from 'data/db';
 
-/**
- * @typedef {import('./types').OrderFromAPI} OrderFromAPI
- * @typedef {import('./types').ThunkAPI} ThunkAPI
- */
-
-/**
- * @function onGetOrder
- * @param {null} _
- * @param {ThunkAPI} thunkAPI
- * @returns {Promise<OrderFromAPI | string>}
- */
-
-const onGetOrder = async (_, thunkAPI) => {
+const onGetRegistration = async (_, thunkAPI) => {
+  console.log('test');  
   try {
     const data = mocData;
     if (data.message) throw new Error(data.message);
@@ -27,32 +16,21 @@ const onGetOrder = async (_, thunkAPI) => {
 };
 
 /** @type {any} */
-const getOrder = createAsyncThunk(
-  'order/getOrder',
-  onGetOrder
+const getRegistration = createAsyncThunk(
+  'registration/getRegistration',
+  onGetRegistration,
 );
 
-/**
- * @typedef {import('./types').Order} Order
- */
-
-/**
- * @function onSendOrder
- * @param {Order} order
- * @param {ThunkAPI} thunkAPI
- * @returns {Promise<boolean | string>}}
- */
-
-const onSendOrder = async (order, thunkAPI) => {
+const onSendRegistration = async (registration, thunkAPI) => {
   try {
-    const endpoint = 'orders';
+    const endpoint = 'clients';
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(order)
+      body: JSON.stringify(registration)
     });
     if (!response.ok) throw new Error('Failed to fetch');
     return thunkAPI.fulfillWithValue(response.ok);
@@ -64,20 +42,20 @@ const onSendOrder = async (order, thunkAPI) => {
 };
 
 /** @type {any} */
-const sendOrder = createAsyncThunk(
-  'order/sendOrder',
-  onSendOrder
+const sendRegistration = createAsyncThunk(
+  'registration/sendRegistration',
+  onSendRegistration,
 );
 
 /**
- * @typedef {import('./types').OrderData} OrderData
+ * @typedef {import('./types').RegistrationData} RegistrationData
  */
 
 const initialState = {
   isModalActive: false,
   isLoading: false,
-  /** @type {null | OrderData} */
-  orderData: null,
+  /** @type {null | RegistrationData} */
+  registrationData: null,
   errorMessage: '',
   name: '',
   surname: '',
@@ -91,12 +69,12 @@ const initialState = {
   isChecked: false,
   isSubmitDisabled: true,
   isSending: false,
-  isOrderSended: false,
+  isRegistrationSended: false,
   isDataSent: false,
 };
 
-export const orderSlice = createSlice({
-  name: 'order',
+export const registrationSlice = createSlice({
+  name: 'registration',
   initialState,
   reducers: {
     setIsModalActive: (state, { payload }) => {
@@ -141,41 +119,41 @@ export const orderSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(getOrder.pending, (state) => {
+      .addCase(getRegistration.pending, (state) => {
         state.isLoading = true;
-        state.orderData = null;
+        state.registrationData = null;
         state.errorMessage = '';
       })
-      .addCase(getOrder.fulfilled, (state, { payload }) => {
+      .addCase(getRegistration.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.orderData = payload;
+        state.registrationData = payload;
         state.errorMessage = '';
       })
-      .addCase(getOrder.rejected, (state, { payload }) => {
+      .addCase(getRegistration.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.orderData = {};
+        state.registrationData = {};
         state.errorMessage = payload;
       })
-      .addCase(sendOrder.pending, (state) => {
+      .addCase(sendRegistration.pending, (state) => {
         state.isSending = true;
-        state.isOrderSended = false;
+        state.isRegistrationSended = false;
         state.errorMessage = '';
       })
-      .addCase(sendOrder.fulfilled, (state) => {
+      .addCase(sendRegistration.fulfilled, (state) => {
         state.isSending = false;
-        state.isOrderSended = true;
+        state.isRegistrationSended = true;
         state.errorMessage = '';
       })
-      .addCase(sendOrder.rejected, (state, { payload }) => {
+      .addCase(sendRegistration.rejected, (state, { payload }) => {
         state.isSending = false;
-        state.isOrderSended = false;
+        state.isRegistrationSended = false;
         state.errorMessage = payload;
       });
   }
 
 });
 
-export { getOrder };
-export { sendOrder };
-export const { reducer: orderReducer } = orderSlice;
-export const orderActions = orderSlice.actions;
+export { getRegistration };
+export { sendRegistration };
+export const { reducer: registrationReducer } = registrationSlice;
+export const registrationActions = registrationSlice.actions;

@@ -269,7 +269,7 @@ export type InputPolicy = {
   url: string,
 };
 
-export type OrderData = {
+export type RegistrationData = {
   title: Title;
   inputName: InputName;
   inputSurname: InputName;
@@ -280,7 +280,7 @@ export type OrderData = {
   inputPolicy: InputPolicy;
 };
 
-export type OrderActions = {
+export type RegistrationActions = {
   setName: Function;
   setSurname: Function;
   setIsValidName: Function;
@@ -292,12 +292,12 @@ export type OrderActions = {
   setIsValidConnection: Function;
   setIsChecked: Function;
   setIsDataSent: Function;
-  sendOrder?: any;
+  sendRegistration?: any;
   setIsModalActive: Function;
-  getOrder: Function;
+  getRegistration: Function;
 };
 
-export type OrderState = {
+export type RegistrationState = {
   name: string;
   surname: string;
   isValidName: boolean;
@@ -311,13 +311,12 @@ export type OrderState = {
   isSubmitDisabled: boolean;
   isSending: boolean;
   errorMessage: string;
-  isOrderSended: boolean;
+  isRegistrationSended: boolean;
   isDataSent: boolean;
-  isModalActive: boolean;
+  isModalActive?: boolean;
   isLoading: boolean;
-  orderData: OrderData;
-  orderActions: OrderActions;
-
+  registrationData: RegistrationData;
+  registrationActions: RegistrationActions;
 };
 
 export type CashbackState = {

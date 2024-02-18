@@ -8,7 +8,7 @@ export const ContinuationPage = () => {
   
   const handleSubmit = (event) => {
     event.preventDefault(); 
-    sendRegistrationData({ email, password });
+    // sendRegistrationData({ email, password });
     setModalOpen(true);
   };
 
