@@ -23,7 +23,7 @@ const getRegistration = createAsyncThunk(
 
 const onSendRegistration = async (registration, thunkAPI) => {
   try {
-    const endpoint = 'orders';
+    const endpoint = 'clients';
     const url = `${API_BASE_URL}/${endpoint}/.json`;
     const response = await fetch(url, {
       method: 'POST',
