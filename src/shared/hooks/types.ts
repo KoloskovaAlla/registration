@@ -315,7 +315,7 @@ export type RegistrationState = {
   isDataSent: boolean;
   isModalActive?: boolean;
   isLoading: boolean;
-  orderData: RegistrationData;
+  registrationData: RegistrationData;
   registrationActions: RegistrationActions;
 };
 
