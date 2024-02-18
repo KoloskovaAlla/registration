@@ -1,1 +1,1 @@
-export { useOrder } from './useOrder';
+export { useRegistration } from './useRegistration';
