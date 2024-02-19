@@ -1,30 +1,9 @@
 export const mocData = {
   "form": {
     "buttonText": "Подтвердить",
-    "connection": {
-      "label": "способо связи",
-      "options": [
-        {
-          "content": "WhatsApp",
-          "value": "whatsapp"
-        },
-        {
-          "content": "Telegram",
-          "value": "telegram"
-        },
-        {
-          "content": "Телефон",
-          "value": "phone"
-        },
-        {
-          "content": "Электронная почта",
-          "value": "email"
-        }
-      ]
-    },
     "inputEmail": {
       "name": "email",
-      "placeholder": "Электронная почта",
+      "placeholder": "example@example.ru",
       "type": "email\"",
       "invalidMessage": "Введена некорректная почта"
     },
@@ -39,15 +18,10 @@ export const mocData = {
       "placeholder": "Фамилия",
       "type": "text",
       "invalidMessage": "Введена некорректная фамилия"
-    },
-    "inputPolicy": {
-      "content": "Политика конфиденциальности",
-      "type": "checkbox",
-      "url": "https://www.google.com/"
-    },
+    }, 
     "inputTel": {
       "name": "tel",
-      "placeholder": "Телефон",
+      "placeholder": "+71234567890",
       "type": "tel",
       "invalidMessage": "Введенные данные не соответствует формату телефонного номера"
     },
