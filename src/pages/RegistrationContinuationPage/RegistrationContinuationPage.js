@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-export const ContinuationPage = () => {
+export const RegistrationContinuationPage = () => {
+   const { id } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [modalOpen, setModalOpen] = useState(false);  
@@ -17,8 +19,7 @@ export const ContinuationPage = () => {
     // Перенаправление на главную страницу
     window.location.href = '/';
   };
-
-  return (
+  if (id === 'login') return ( 
     <div>
       <h2>Продолжение регистрации</h2>
       <form onSubmit={handleSubmit}>

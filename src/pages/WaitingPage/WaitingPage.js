@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 
 export const WaitingPage = () => {
   const { id } = useParams();
+  
   const [status, setStatus] = useState(1);
 
   useEffect(() => {
@@ -10,8 +11,9 @@ export const WaitingPage = () => {
     // Это нужно заменить на реальную логику запроса к серверу
     const fetchStatus = async () => {      
       await setTimeout(() => {       
-        const randomStatus = Math.floor(Math.random() * 3) + 1;     
-        setStatus(randomStatus);
+        // const randomStatus = Math.floor(Math.random() * 3) + 1;     
+        const status = 2;     
+        setStatus(status);
       }, 1000);
     };
     fetchStatus();
@@ -25,7 +27,7 @@ export const WaitingPage = () => {
     case 2:
       message = (
         <>
-          Запрос обработан. <Link to={`/registrationpage/${id}`}>Продолжить регистрацию</Link>
+          Запрос обработан. <Link to={`/registrationpage/login`}>Продолжить регистрацию</Link>
         </>
       );
       break;
