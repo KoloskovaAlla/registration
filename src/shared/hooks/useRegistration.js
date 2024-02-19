@@ -30,15 +30,16 @@ export const useRegistration = () => {
   //   localStorage.setItem('isModalActive', isModalActive);
   // }, [isModalActive]);
 
-  useEffect(() => {
-    const isFormValid = state.isValidName &&
-      state.isValidTel &&
-      state.isValidEmail &&
-      state.isValidConnection &&
-      state.isChecked;
-    dispatch(registrationActions.setIsSubmitDisabled(!isFormValid));
-  }, [dispatch, state]);
+  
 
+  useEffect(() => {
+    const isRegistrationDataValid = state.isValidName &&      
+      state.isValidEmail &&
+      state.isValidTel;      
+      dispatch(registrationActions.setIsSubmitDisabled(!isRegistrationDataValid));
+    }, [dispatch, state]);
+    
+  
   Object.assign(registrationActions, { sendRegistration, getRegistration });
 
   return {
