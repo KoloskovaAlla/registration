@@ -25,7 +25,7 @@ export const WaitingPage = () => {
     case 2:
       message = (
         <>
-          Запрос обработан. <Link to={`/registration/${id}`}>Продолжить регистрацию</Link>
+          Запрос обработан. <Link to={`/registrationpage/${id}`}>Продолжить регистрацию</Link>
         </>
       );
       break;

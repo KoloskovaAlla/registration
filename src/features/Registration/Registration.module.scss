@@ -228,15 +228,6 @@
   fill: #000;
 }
 
-.submit {
-  margin-top: 20px;
-  border: 1px solid #222222;
-  border-radius: 30px;
-  height: 40px;
-  width: 100%;
-  color: #222222;
-}
-
 @import 'shared/constants/styles/breakpoints';
 
 .title {
@@ -435,6 +426,7 @@
   color: #222222;
 
   &:disabled {
-    opacity: 0.5
+    opacity: 0.5;  
+    color: #342626;
   }
 }

@@ -6,15 +6,22 @@ import {
   TextField,
 } from 'entity';
 
+import {
+  validateName,
+  //добавить проверку фамилии
+  validateTel,
+  validateEmail,  
+  classNames
+} from 'shared/utils';
+
 // import {
 //   TextField,
 //   SelectField,
 // } from 'entity';
 
-// import {
-//   Checkbox,
-//   Button,
-// } from 'shared/ui';
+import {  
+  Button,
+} from 'shared/ui';
 
 
 export const Registration = () => {
@@ -24,29 +31,26 @@ export const Registration = () => {
   useEffect(() => {
     dispatch(registrationState.registrationActions.getRegistration());
   }, [dispatch, registrationState.registrationActions.getRegistration]);
-
-  useEffect(() => {
-    console.log(registrationState);
-  }, [dispatch, registrationState]);
+  
 
   const onNameChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setName(value));
-    // dispatch(registrationState.orderActions.setIsValidName(validateName(value)));
+    dispatch(registrationState.registrationActions.setIsValidName(validateName(value)));
   };
 
   const onSurnameChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setSurname(value));
-    // dispatch(registrationState.orderActions.setIsValidName(validateName(value)));
+    dispatch(registrationState.registrationActions.setIsValidName(validateName(value)));
   };
 
   const onTelChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setTel(value));
-    // dispatch(registrationState.orderActions.setIsValidTel(validateTel(value)));
+    dispatch(registrationState.registrationActions.setIsValidTel(validateTel(value)));
   };
 
   const onEmailChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setEmail(value));
-    // dispatch(registrationState.orderActions.setIsValidEmail(validateEmail(value)));
+    dispatch(registrationState.registrationActions.setIsValidEmail(validateEmail(value)));
   };
 
   const nameOptions = {
@@ -60,7 +64,7 @@ export const Registration = () => {
 
   const surnameOptions = {
     value: registrationState.surname,
-    isValidField: registrationState.isValidName,
+    isValidField: registrationState.isValidSurname,
     onFieldChange: onSurnameChange,
     invalidMessage: registrationState.registrationData?.inputSurname.invalidMessage,
     type: registrationState.registrationData?.inputSurname.type,
@@ -92,19 +96,38 @@ export const Registration = () => {
     emailOptions,
   };
 
-  // const {
-  //   nameOptions,
-  //   telOptions,
-  //   emailOptions,
-  //   connectOptions,
-  //   checkboxOptions,
-  //   submitOptions,
-  // } = formOptions;
+    const handleFormSubmit = (event) => {
+      event.preventDefault();
 
-  // const {
-  //   handleFormSubmit,
-  //   isSubmitDisabled,
-  // } = submitOptions;
+      // console.log(registrationState.isValidName)
+      // console.log(registrationState.isValidName)
+      // console.log(registrationState.isValidName)
+      // console.log(registrationState.isValidName)
+
+      const isRegistrationDataValid = registrationState.isValidName &&
+      // registrationState.isValidSurname &&
+      registrationState.isValidTel &&
+      registrationState.isValidEmail;
+
+      
+      if (isRegistrationDataValid) {
+        console.log('отправка');
+        const registrationData = {        
+          name: registrationState.name,
+          surname: registrationState.surname,
+          tel: registrationState.tel,
+          email: registrationState.email,        
+        };
+        dispatch(registrationState?.registrationActions.sendRegistration(registrationData));
+        dispatch(registrationState?.registrationActions.setIsDataSent(true));
+      };
+  };
+  const { isDataSent } = useRegistration();
+  useEffect(() => {
+    console.log(isDataSent);
+  }, [isDataSent]);
+
+  const { isSubmitDisabled } = registrationState; 
 
   return (
     <div className={classes.body}>
@@ -113,7 +136,7 @@ export const Registration = () => {
 
       <form
         className={classes.form}
-      // onSubmit={handleFormSubmit}
+        onSubmit={handleFormSubmit}
       >
         {nameOptions && (
           <TextField
@@ -139,13 +162,13 @@ export const Registration = () => {
             options={telOptions}
           />
         )}
-        {/* 
+        
         <Button
           className={classes.submit}
-          label='submit'
+          label='РЕГИСТРАЦИЯ'
           content={'text'}
           disabled={isSubmitDisabled}
-        /> */}
+        />
       </form>
     </div>
   );

@@ -221,7 +221,7 @@ export type CurrentPageState = {
 export type InputName = {
   type: string;
   placeholder: string;
-  isValidName: boolean;
+  isValidName: boolean;  
   invalidMessage: string;
   options: null;
 };
@@ -284,6 +284,7 @@ export type RegistrationActions = {
   setName: Function;
   setSurname: Function;
   setIsValidName: Function;
+  setIsValidSurname: Function;
   setTel: Function;
   setIsValidTel: Function;
   setEmail: Function;
@@ -301,6 +302,7 @@ export type RegistrationState = {
   name: string;
   surname: string;
   isValidName: boolean;
+  isValidSurname: boolean;
   tel: string;
   isValidTel: boolean;
   email: string;

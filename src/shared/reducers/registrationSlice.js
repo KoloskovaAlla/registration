@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 import { mocData } from 'data/db';
 
-const onGetRegistration = async (_, thunkAPI) => {
-  console.log('test');  
+const onGetRegistration = async (_, thunkAPI) => {   
   try {
     const data = mocData;
     if (data.message) throw new Error(data.message);
@@ -59,14 +58,11 @@ const initialState = {
   errorMessage: '',
   name: '',
   surname: '',
-  isValidName: true,
+  isValidName: false,
   tel: '',
-  isValidTel: true,
+  isValidTel: false,
   email: '',
-  isValidEmail: true,
-  connection: '',
-  isValidConnection: true,
-  isChecked: false,
+  isValidEmail: false,
   isSubmitDisabled: true,
   isSending: false,
   isRegistrationSended: false,
@@ -76,6 +72,7 @@ const initialState = {
 export const registrationSlice = createSlice({
   name: 'registration',
   initialState,
+
   reducers: {
     setIsModalActive: (state, { payload }) => {
       state.isModalActive = payload;
