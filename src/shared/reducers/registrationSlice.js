@@ -102,15 +102,6 @@ export const registrationSlice = createSlice({
     setIsValidEmail: (state, { payload }) => {
       state.isValidEmail = payload;
     },
-    setConnection: (state, { payload }) => {
-      state.connection = payload;
-    },
-    setIsValidConnection: (state, { payload }) => {
-      state.isValidConnection = payload;
-    },
-    setIsChecked: (state, { payload }) => {
-      state.isChecked = payload;
-    },
     setIsSubmitDisabled: (state, { payload }) => {
       state.isSubmitDisabled = payload;
     },

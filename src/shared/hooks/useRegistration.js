@@ -30,8 +30,6 @@ export const useRegistration = () => {
   //   localStorage.setItem('isModalActive', isModalActive);
   // }, [isModalActive]);
 
-
-
   useEffect(() => {
     const isRegistrationDataValid = state.isValidName &&
       state.isValidSurname &&
