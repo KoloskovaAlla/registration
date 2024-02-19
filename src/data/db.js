@@ -25,17 +25,20 @@ export const mocData = {
     "inputEmail": {
       "name": "email",
       "placeholder": "Электронная почта",
-      "type": "email\""
+      "type": "email\"",
+      "invalidMessage": "Введена некорректная почта"
     },
     "inputName": {
       "name": "name",
       "placeholder": "Имя",
-      "type": "text"
+      "type": "text",
+      "invalidMessage": "Введено некорректное имя"
     },
     "inputSurname": {
       "name": "surname",
       "placeholder": "Фамилия",
-      "type": "text"
+      "type": "text",
+      "invalidMessage": "Введена некорректная фамилия"
     },
     "inputPolicy": {
       "content": "Политика конфиденциальности",
@@ -45,7 +48,8 @@ export const mocData = {
     "inputTel": {
       "name": "tel",
       "placeholder": "Телефон",
-      "type": "tel"
+      "type": "tel",
+      "invalidMessage": "Введенные данные не соответствует формату телефонного номера"
     },
     "title": {
       "content": "Регистрация аккаунта",

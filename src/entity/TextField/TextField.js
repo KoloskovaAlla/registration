@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { InputText } from 'shared/ui';
 
 /**
@@ -11,12 +12,14 @@ import { InputText } from 'shared/ui';
  */
 
 export const TextField = ({ className, options }) => {
+
   const {
     value,
     isValidField,
     onFieldChange,
     invalidMessage,
-    placeholder
+    placeholder,
+    hasUserTyped,
   } = options;
 
   return (
@@ -27,7 +30,7 @@ export const TextField = ({ className, options }) => {
         onChange={onFieldChange}
       />
 
-      {!isValidField && <span>{invalidMessage}</span>}
+      {hasUserTyped && !isValidField && <span>{invalidMessage}</span>}
     </label>
   );
 };
