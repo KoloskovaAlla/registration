@@ -23,7 +23,7 @@ export const mocData = {
       "name": "tel",
       "placeholder": "+71234567890",
       "type": "tel",
-      "invalidMessage": "Введенные данные не соответствует формату телефонного номера"
+      "invalidMessage": "Некорретный номер"
     },
     "title": {
       "content": "Регистрация аккаунта",
