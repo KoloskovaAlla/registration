@@ -1,0 +1,1 @@
+export { RegistrationContinuationPage } from './RegistrationContinuationPage';
