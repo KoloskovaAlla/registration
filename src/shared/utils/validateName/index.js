@@ -1,0 +1,1 @@
+export { validateNameOrSurname } from './validateNameOrSurname';

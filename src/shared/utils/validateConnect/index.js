@@ -1,1 +1,0 @@
-export { validateConnect } from './validateConnect';

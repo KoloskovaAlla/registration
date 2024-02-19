@@ -1,0 +1,1 @@
+export const validateNameOrSurname = (input) => /^[А-ЯЁA-Z][а-яёa-z]*$/.test(input);

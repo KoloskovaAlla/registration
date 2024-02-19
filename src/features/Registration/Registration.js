@@ -7,10 +7,10 @@ import {
 } from 'entity';
 
 import {
-  validateName,
+  validateNameOrSurname,
   //добавить проверку фамилии
   validateTel,
-  validateEmail,  
+  validateEmail,
   classNames
 } from 'shared/utils';
 
@@ -19,7 +19,7 @@ import {
 //   SelectField,
 // } from 'entity';
 
-import {  
+import {
   Button,
 } from 'shared/ui';
 
@@ -31,16 +31,16 @@ export const Registration = () => {
   useEffect(() => {
     dispatch(registrationState.registrationActions.getRegistration());
   }, [dispatch, registrationState.registrationActions.getRegistration]);
-  
+
 
   const onNameChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setName(value));
-    dispatch(registrationState.registrationActions.setIsValidName(validateName(value)));
+    dispatch(registrationState.registrationActions.setIsValidName(validateNameOrSurname(value)));
   };
 
   const onSurnameChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setSurname(value));
-    dispatch(registrationState.registrationActions.setIsValidName(validateName(value)));
+    dispatch(registrationState.registrationActions.setIsValidSurname(validateNameOrSurname(value)));
   };
 
   const onTelChange = ({ target: { value } }) => {
@@ -96,38 +96,38 @@ export const Registration = () => {
     emailOptions,
   };
 
-    const handleFormSubmit = (event) => {
-      event.preventDefault();
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
-      // console.log(registrationState.isValidName)
-      // console.log(registrationState.isValidName)
-      // console.log(registrationState.isValidName)
-      // console.log(registrationState.isValidName)
+    // console.log(registrationState.isValidName)
+    // console.log(registrationState.isValidName)
+    // console.log(registrationState.isValidName)
+    // console.log(registrationState.isValidName)
 
-      const isRegistrationDataValid = registrationState.isValidName &&
-      // registrationState.isValidSurname &&
+    const isRegistrationDataValid = registrationState.isValidName &&
+      registrationState.isValidSurname &&
       registrationState.isValidTel &&
       registrationState.isValidEmail;
 
-      
-      if (isRegistrationDataValid) {
-        console.log('отправка');
-        const registrationData = {        
-          name: registrationState.name,
-          surname: registrationState.surname,
-          tel: registrationState.tel,
-          email: registrationState.email,        
-        };
-        dispatch(registrationState?.registrationActions.sendRegistration(registrationData));
-        dispatch(registrationState?.registrationActions.setIsDataSent(true));
+
+    if (isRegistrationDataValid) {
+      console.log('отправка');
+      const registrationData = {
+        name: registrationState.name,
+        surname: registrationState.surname,
+        tel: registrationState.tel,
+        email: registrationState.email,
       };
+      dispatch(registrationState?.registrationActions.sendRegistration(registrationData));
+      dispatch(registrationState?.registrationActions.setIsDataSent(true));
+    };
   };
   const { isDataSent } = useRegistration();
   useEffect(() => {
     console.log(isDataSent);
   }, [isDataSent]);
 
-  const { isSubmitDisabled } = registrationState; 
+  const { isSubmitDisabled } = registrationState;
 
   return (
     <div className={classes.body}>
@@ -162,7 +162,7 @@ export const Registration = () => {
             options={telOptions}
           />
         )}
-        
+
         <Button
           className={classes.submit}
           label='РЕГИСТРАЦИЯ'
