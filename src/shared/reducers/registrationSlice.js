@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_BASE_URL } from 'shared/constants/api';
 import { mocData } from 'data/db';
 
-const onGetRegistration = async (_, thunkAPI) => {   
+const onGetRegistration = async (_, thunkAPI) => {
   try {
     const data = mocData;
     if (data.message) throw new Error(data.message);
@@ -57,8 +57,9 @@ const initialState = {
   registrationData: null,
   errorMessage: '',
   name: '',
-  surname: '',
   isValidName: false,
+  surname: '',
+  isValidSurname: false,
   tel: '',
   isValidTel: false,
   email: '',
@@ -80,11 +81,14 @@ export const registrationSlice = createSlice({
     setName: (state, { payload }) => {
       state.name = payload;
     },
+    setIsValidName: (state, { payload }) => {
+      state.isValidName = payload;
+    },
     setSurname: (state, { payload }) => {
       state.surname = payload;
     },
-    setIsValidName: (state, { payload }) => {
-      state.isValidName = payload;
+    setIsValidSurname: (state, { payload }) => {
+      state.isValidSurname = payload;
     },
     setTel: (state, { payload }) => {
       state.tel = payload;

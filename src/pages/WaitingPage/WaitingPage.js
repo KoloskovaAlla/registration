@@ -3,16 +3,16 @@ import { useParams, Link } from 'react-router-dom';
 
 export const WaitingPage = () => {
   const { id } = useParams();
-  
+
   const [status, setStatus] = useState(1);
 
   useEffect(() => {
-    // Ваша логика для получения статуса обработки запроса
+    // Логика для получения статуса обработки запроса
     // Это нужно заменить на реальную логику запроса к серверу
-    const fetchStatus = async () => {      
-      await setTimeout(() => {       
+    const fetchStatus = async () => {
+      await setTimeout(() => {
         // const randomStatus = Math.floor(Math.random() * 3) + 1;     
-        const status = 2;     
+        const status = 2;
         setStatus(status);
       }, 1000);
     };
