@@ -2,27 +2,17 @@ import classes from './Registration.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRegistration } from 'shared/hooks';
-import {
-  TextField,
-} from 'entity';
+import { TextField } from 'entity';
 
 import {
   validateNameOrSurname,
-  //добавить проверку фамилии
   validateTel,
   validateEmail,
-  classNames
 } from 'shared/utils';
-
-// import {
-//   TextField,
-//   SelectField,
-// } from 'entity';
 
 import {
   Button,
 } from 'shared/ui';
-
 
 export const Registration = () => {
   const dispatch = useDispatch();
@@ -99,11 +89,6 @@ export const Registration = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    // console.log(registrationState.isValidName)
-    // console.log(registrationState.isValidName)
-    // console.log(registrationState.isValidName)
-    // console.log(registrationState.isValidName)
-
     const isRegistrationDataValid = registrationState.isValidName &&
       registrationState.isValidSurname &&
       registrationState.isValidTel &&
@@ -111,7 +96,6 @@ export const Registration = () => {
 
 
     if (isRegistrationDataValid) {
-      console.log('отправка');
       const registrationData = {
         name: registrationState.name,
         surname: registrationState.surname,

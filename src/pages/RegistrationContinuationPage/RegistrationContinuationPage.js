@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams} from 'react-router-dom';
 
 export const RegistrationContinuationPage = () => {
    const { id } = useParams();
