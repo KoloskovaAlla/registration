@@ -5,6 +5,7 @@ import { mocData } from 'data/db';
 const onGetRegistration = async (_, thunkAPI) => {
   try {
     const data = mocData;
+    console.log(data.form);
     if (data.message) throw new Error(data.message);
     return thunkAPI.fulfillWithValue(data.form);
   } catch (error) {

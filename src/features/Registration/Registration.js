@@ -1,5 +1,5 @@
 import classes from './Registration.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRegistration } from 'shared/hooks';
 import { TextField } from 'entity';
@@ -19,13 +19,15 @@ export const Registration = () => {
   const registrationState = useRegistration();
 
   useEffect(() => {
+    console.log(registrationState.registrationActions.getRegistration())
     dispatch(registrationState.registrationActions.getRegistration());
   }, [dispatch, registrationState.registrationActions.getRegistration]);
 
-
+  const [hasUserTypedName, setHasUserTypedName] = useState(false);
   const onNameChange = ({ target: { value } }) => {
     dispatch(registrationState.registrationActions.setName(value));
     dispatch(registrationState.registrationActions.setIsValidName(validateNameOrSurname(value)));
+    setHasUserTypedName(true);
   };
 
   const onSurnameChange = ({ target: { value } }) => {
@@ -43,6 +45,12 @@ export const Registration = () => {
     dispatch(registrationState.registrationActions.setIsValidEmail(validateEmail(value)));
   };
 
+
+  useEffect(() => {
+    console.log(registrationState);
+  }, []);
+
+
   const nameOptions = {
     value: registrationState.name,
     isValidField: registrationState.isValidName,
@@ -50,6 +58,7 @@ export const Registration = () => {
     invalidMessage: registrationState.registrationData?.inputName.invalidMessage,
     type: registrationState.registrationData?.inputName.type,
     placeholder: registrationState.registrationData?.inputName.placeholder,
+    hasUserTyped: hasUserTypedName,
   };
 
   const surnameOptions = {
@@ -106,10 +115,6 @@ export const Registration = () => {
       dispatch(registrationState?.registrationActions.setIsDataSent(true));
     };
   };
-  const { isDataSent } = useRegistration();
-  useEffect(() => {
-    console.log(isDataSent);
-  }, [isDataSent]);
 
   const { isSubmitDisabled } = registrationState;
 
